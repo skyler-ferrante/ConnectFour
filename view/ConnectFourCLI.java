@@ -11,8 +11,8 @@ import model.ConnectFourException;
  */
 public class ConnectFourCLI {
     //END_OF_LINE will be repeated WIDTH times before use
-    private static String END_OF_LINE = "-----";
-    private final static String BARRIER = " | ";
+    private static String END_OF_LINE = "-";
+    private final static String BARRIER = " ";
 
     /**
      * Print the board to the terminal
@@ -57,7 +57,8 @@ public class ConnectFourCLI {
         Scanner scanner = new Scanner(System.in);
         
         //Make END_OF_LINE the size of one line
-        END_OF_LINE = END_OF_LINE.repeat(model.WIDTH-1);
+        int lineLength = Checker.RED.toString().length()+BARRIER.length();
+        END_OF_LINE = END_OF_LINE.repeat(lineLength*model.WIDTH);
 
         while(true){
             Checker player = model.getCurrentPlayer();
