@@ -9,7 +9,7 @@ public class ConnectFour{
     
     private Checker[][] board;
     private int[] numberOfMovesByRow;
-    private int totalMoves;
+    private int moveNumber;
     private boolean isGameOver;
 
     private Checker currentPlayer;
@@ -20,7 +20,7 @@ public class ConnectFour{
 
         board = new Checker[WIDTH][HEIGHT];
         numberOfMovesByRow = new int[WIDTH];
-        totalMoves = 0;
+        moveNumber = 1;
 
         currentPlayer = Checker.RED;
 
@@ -49,6 +49,10 @@ public class ConnectFour{
      */
     public Checker getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public int getTotalMoves() {
+        return moveNumber;
     }
 
     /**
@@ -137,7 +141,7 @@ public class ConnectFour{
         int y = numberOfMovesByRow[x];
         board[x][y] = value;
         numberOfMovesByRow[x] = y+1;
-        totalMoves++;
+        moveNumber++;
         if(wasLastMoveWinning(x, y)){
             isGameOver = true;
             return;

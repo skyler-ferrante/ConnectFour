@@ -12,7 +12,7 @@ import model.ConnectFourException;
 public class ConnectFourCLI {
     //END_OF_LINE will be repeated WIDTH times before use
     private static String END_OF_LINE = "-";
-    private final static String BARRIER = " ";
+    private final static String BARRIER = " | ";
 
     /**
      * Print the board to the terminal
@@ -57,11 +57,12 @@ public class ConnectFourCLI {
         Scanner scanner = new Scanner(System.in);
         
         //Make END_OF_LINE the size of one line
-        int lineLength = Checker.RED.toString().length()+BARRIER.length();
+        int lineLength = Checker.EMPTY.toString().length()+BARRIER.length();
         END_OF_LINE = END_OF_LINE.repeat(lineLength*model.WIDTH);
 
         while(! model.isGameOver()){
             Checker player = model.getCurrentPlayer();
+            System.out.println("Move number "+model.getTotalMoves());
             System.out.print(player.name()+" enter move: ");
 
             int x = getInt(scanner);
