@@ -37,6 +37,11 @@ public class ConnectFourCLI {
         System.out.println(result);
     }
 
+    /**
+     * Get int from scanner
+     * @param s Scanner to get int from
+     * @return int from scanner
+     */
     private static int getInt(Scanner s){
         while(!s.hasNextInt()){
             s.next();
