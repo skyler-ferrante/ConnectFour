@@ -76,11 +76,9 @@ public class ConnectFour{
     private boolean checkFourInARowInDirection(int x, int y, int xAdder, int yAdder){
         Checker currentPlayer = board[x][y];
         
-        System.out.println("X: "+x+" Y: "+y);
         for(int i = 0; i<3; i++){
             x += xAdder;
             y += yAdder;
-            System.out.println("I: "+i+" X: "+x+" Y: "+y);
             
             if(x >= WIDTH || x < 0 || y >= HEIGHT || y < 0){
                 return false;
