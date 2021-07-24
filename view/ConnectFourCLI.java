@@ -60,9 +60,9 @@ public class ConnectFourCLI {
         int lineLength = Checker.RED.toString().length()+BARRIER.length();
         END_OF_LINE = END_OF_LINE.repeat(lineLength*model.WIDTH);
 
-        while(true){
+        while(! model.isGameOver()){
             Checker player = model.getCurrentPlayer();
-            System.out.print(player+" enter move: ");
+            System.out.print(player.name()+" enter move: ");
 
             int x = getInt(scanner);
 
@@ -73,5 +73,8 @@ public class ConnectFourCLI {
                 System.out.println(e.getMessage());
             }
         }
+
+        System.out.println(model.getCurrentPlayer().name()+" wins!");
+        System.out.println("Game Over!");
     }
 }
