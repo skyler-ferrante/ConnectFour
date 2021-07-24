@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import model.Checker;
@@ -50,11 +52,12 @@ public class ConnectFourCLI {
         return s.nextInt();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Welcome to ConnectFourCLI!");
 
         ConnectFour model = new ConnectFour();
-        Scanner scanner = new Scanner(System.in);
+        // Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(new File("no_win_move_list.txt"));
         
         //Make END_OF_LINE the size of one line
         int lineLength = Checker.EMPTY.toString().length()+BARRIER.length();
@@ -75,7 +78,13 @@ public class ConnectFourCLI {
             }
         }
 
-        System.out.println(model.getCurrentPlayer().name()+" wins!");
+        Checker winner = model.getCurrentPlayer();
+        if(winner == Checker.EMPTY){
+            System.out.println("Board filled, and no one wins!");
+        }
+        else{
+            System.out.println(winner.name()+" wins!");
+        }
         System.out.println("Game Over!");
     }
 }

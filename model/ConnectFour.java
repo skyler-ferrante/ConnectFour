@@ -142,8 +142,14 @@ public class ConnectFour{
         board[x][y] = value;
         numberOfMovesByRow[x] = y+1;
         moveNumber++;
+        
+        //Winning check has to go first, since player can win on last turn
         if(wasLastMoveWinning(x, y)){
             isGameOver = true;
+            return;
+        }else if(WIDTH*HEIGHT == moveNumber-1){
+            isGameOver = true;
+            currentPlayer = Checker.EMPTY;
             return;
         }
 
