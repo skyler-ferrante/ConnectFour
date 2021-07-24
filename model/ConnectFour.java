@@ -55,13 +55,12 @@ public class ConnectFour{
         else if(numberOfMovesByRow[x] == HEIGHT){
             throw new ConnectFourException("Row "+x+" is already full!");
         }
+
         //Make move
-        else{
-            int y = numberOfMovesByRow[x];
-            board[x][y] = value;
-            numberOfMovesByRow[x] = y+1;
-        }
-        
+        int y = numberOfMovesByRow[x];
+        board[x][y] = value;
+        numberOfMovesByRow[x] = y+1;
+
         //Switch current player
         currentPlayer = (currentPlayer == Checker.RED) ? Checker.BLACK : Checker.RED;
     }

@@ -10,18 +10,18 @@ import model.ConnectFourException;
  * CLI version of ConnectFour
  */
 public class ConnectFourCLI {
-    private final static String BARRIER = " | ";
-    /**
-     * END_OF_LINE will be repeated WIDTH times before use
-     */
+    //END_OF_LINE will be repeated WIDTH times before use
     private static String END_OF_LINE = "-----";
+    private final static String BARRIER = " | ";
 
     /**
      * Print the board to the terminal
+     * Uses END_OF_LINE, BARRIER, and toString of Checker enum
      */
     private static void showBoard(ConnectFour model){
         StringBuilder result = new StringBuilder();
 
+        //Start from top left, and go to bottom right
         for(int y = model.HEIGHT-1; y>=0; y--){
             for(int x = 0; x<model.WIDTH; x++){
                 Checker checker = model.getChecker(x, y);
@@ -29,6 +29,7 @@ public class ConnectFourCLI {
                 result.append(BARRIER);
             }
 
+            //Line seperator
             result.append("\n");
             result.append(END_OF_LINE);
             result.append("\n");
@@ -54,6 +55,8 @@ public class ConnectFourCLI {
 
         ConnectFour model = new ConnectFour();
         Scanner scanner = new Scanner(System.in);
+        
+        //Make END_OF_LINE the size of one line
         END_OF_LINE = END_OF_LINE.repeat(model.WIDTH-1);
 
         while(true){
