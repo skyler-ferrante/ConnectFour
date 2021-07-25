@@ -61,7 +61,7 @@ public class ConnectFour {
     }
 
     /**
-     * Reset board to empty
+     * Reset board to empty. Notifies observers.
      */
     public void reset(){
         isGameOver = false;
@@ -130,7 +130,7 @@ public class ConnectFour {
     }
     
     /**
-     * Places checker in given row
+     * Places checker in given row and notifies observers
      * @param x The x position of the checker to place
      * @param value Value of checker to place
      * @throws ConnectFourException If the row is already full, or if the row is out of bounds
