@@ -1,6 +1,6 @@
 # ConnectFour
 
-Connect Four game made using the Model-View-Controller pattern, with a CLI and GUI view.
+Connect Four game made using the Model-View pattern, with a CLI and GUI view.
 
 JavaFX is used for the GUI.
 
