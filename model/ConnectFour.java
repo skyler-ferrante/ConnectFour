@@ -1,13 +1,17 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ConnectFour model
  */
-public class ConnectFour{
+public class ConnectFour {
     public final int HEIGHT;
     public final int WIDTH;
     
     private Checker[][] board;
+    private List<ConnectFourObserver> observers;
     private int[] numberOfMovesByRow;
     private int moveNumber;
     private boolean isGameOver;
@@ -19,6 +23,7 @@ public class ConnectFour{
         this.WIDTH = width;
 
         board = new Checker[WIDTH][HEIGHT];
+        observers = new ArrayList<>();
         numberOfMovesByRow = new int[WIDTH];
         moveNumber = 1;
 
@@ -64,7 +69,14 @@ public class ConnectFour{
         for(int x = 0; x < board.length; x++){
             for(int y = 0; y < board[0].length; y++){
                 board[x][y] = Checker.EMPTY;
+                for(ConnectFourObserver observer : observers){
+                    observer.notifyRowCol(x, y);
+                }
             }
+        }
+
+        for(int x = 0; x < numberOfMovesByRow.length; x++){
+            numberOfMovesByRow[x] = 0;
         }
     }
 
@@ -123,7 +135,7 @@ public class ConnectFour{
      * @param value Value of checker to place
      * @throws ConnectFourException If the row is already full, or if the row is out of bounds
      */
-    public void move(int x, Checker value) throws ConnectFourException{
+    public void move(int x) throws ConnectFourException{
         if(isGameOver){
             throw new ConnectFourException("Game already over, please reset.");
         }
@@ -139,10 +151,14 @@ public class ConnectFour{
 
         //Make move
         int y = numberOfMovesByRow[x];
-        board[x][y] = value;
+        board[x][y] = currentPlayer;
         numberOfMovesByRow[x] = y+1;
         moveNumber++;
         
+        for(ConnectFourObserver observer : observers){
+            observer.notifyRowCol(x, y);
+        }
+
         //Winning check has to go first, since player can win on last turn
         if(wasLastMoveWinning(x, y)){
             isGameOver = true;
@@ -159,5 +175,14 @@ public class ConnectFour{
 
     public boolean isGameOver(){
         return isGameOver;
+    }
+
+    /**
+     * Register observer to notify of tile changes
+     * 
+     * @param observer Observer to be notified after checkers are changed
+     */
+    public void register(ConnectFourObserver observer){
+        observers.add(observer);
     }
 }
