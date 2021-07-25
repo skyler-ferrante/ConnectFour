@@ -57,7 +57,9 @@ public class ConnectFourCLI {
 
         ConnectFour model = new ConnectFour();
         Scanner scanner = new Scanner(System.in);
-        // Scanner scanner = new Scanner(new File("no_win_move_list.txt"));
+        // Scanner scanner = new Scanner(new File("move-lists/no_win_move_list.txt"));
+        // Scanner scanner = new Scanner(new File("move-lists/red_win_move_list.txt"));
+        // Scanner scanner = new Scanner(new File("move-lists/black_win_move_list.txt"));
         
         //Make END_OF_LINE the size of one line
         int lineLength = Checker.EMPTY.toString().length()+BARRIER.length();
