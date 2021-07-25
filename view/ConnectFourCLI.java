@@ -71,7 +71,7 @@ public class ConnectFourCLI {
             int x = getInt(scanner);
 
             try {
-                model.move(x, player);
+                model.move(x);
                 showBoard(model);
             } catch (ConnectFourException e) {
                 System.out.println(e.getMessage());
