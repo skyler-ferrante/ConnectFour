@@ -125,7 +125,11 @@ public class ConnectFourGUI extends Application {
         button.setOnMouseClicked((e) -> {
             try {
                 model.move(x);
-                setCurrentPlayer(status);
+                if(model.isGameOver()){
+                    status.setText("Game over! "+model.getCurrentPlayer().name()+" wins!");
+                }else{
+                    setCurrentPlayer(status);
+                }
             } catch (ConnectFourException error) {
                 setCurrentPlayer(status);
                 String text = status.getText();
