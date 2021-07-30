@@ -45,7 +45,7 @@ public class ConnectFourGUI extends Application {
         Text status = new Text();
         status.setFont(FONT);
         setCurrentPlayer(status);
-        status.setText("Press top y spaces ("+status.getText()+")");
+        status.setText("Press top spaces ("+status.getText()+")");
 
         Button reset = new Button("RESET");
         reset.setFont(FONT);
