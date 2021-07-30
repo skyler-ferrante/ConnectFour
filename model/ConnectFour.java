@@ -78,6 +78,8 @@ public class ConnectFour {
         for(int x = 0; x < numberOfMovesByRow.length; x++){
             numberOfMovesByRow[x] = 0;
         }
+
+        currentPlayer = Checker.RED;
     }
 
     /**
