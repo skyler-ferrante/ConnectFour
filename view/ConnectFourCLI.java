@@ -1,6 +1,5 @@
 package view;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -27,7 +26,7 @@ public class ConnectFourCLI {
         for(int y = model.HEIGHT-1; y>=0; y--){
             for(int x = 0; x<model.WIDTH; x++){
                 Checker checker = model.getChecker(x, y);
-                result.append(checker);
+                result.append(checker.colorToString());
                 result.append(BARRIER);
             }
 
